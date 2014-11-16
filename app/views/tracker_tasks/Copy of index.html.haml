@@ -1,0 +1,70 @@
+%h1 Listing tracker_tasks
+%div= link_to 'AllTasks', tracker_tasks_path
+= @z
+
+  
+
+%table
+  %tr
+    %th Initialized
+    %th Accepted
+    %th Verified
+    %th In Process
+    %th In Test
+    %th Executed
+  
+  - @tracker_tasks.each do |tracker_task|
+  - @states.each do |state|
+    %tr
+      %td{:class=>'taskcell'}
+        - if tracker_task.state == 'initialized' 
+          - # Stuff like ______ activates the if statement
+          = render tracker_task 
+          = link_to 'Accept', act_path(tracker_task, :execute=>:accept)
+        - else
+          - # Stuff like _____ activates the else statement
+          &amp;
+      %td{:class=>'taskcell'}
+        - if tracker_task.state == 'accepted'
+          - # Stuff like ______ activates the if statement
+          = render tracker_task 
+          = link_to 'Verify', act_path(tracker_task, :execute=>:verify)          
+        - else
+          - # Stuff like _____ activates the else statement
+          &amp;
+      %td{:class=>'taskcell'}
+        - if tracker_task.state == 'verified'
+          - # Stuff like ______ activates the if statement
+          = render tracker_task 
+          = link_to 'Start Processing', act_path(tracker_task, :execute=>:start_process)          
+        - else
+          - # Stuff like _____ activates the else statement
+          &amp;
+      %td{:class=>'taskcell'}
+        - if tracker_task.state == 'in_process' 
+          - # Stuff like ______ activates the if statement
+          = render tracker_task 
+          = link_to 'Finish Process', act_path(tracker_task, :execute=>:finish_process)
+          - # Stuff like _____ activates the else statement
+          &amp;
+      %td{:class=>'taskcell'}
+        - if tracker_task.state == 'in_test'
+          - # Stuff like ______ activates the if statement
+          = render tracker_task 
+          = link_to 'Test_Passed', act_path(tracker_task, :execute=>:test_passed   )      
+        - else
+          - # Stuff like _____ activates the else statement
+          &amp;            
+      %td{:class=>'taskcell'}
+        - if tracker_task.state == 'executed'
+          - # Stuff like ______ activates the if statement
+          = render tracker_task 
+        - else
+          - # Stuff like _____ activates the else statement
+          &amp;                         
+
+                             
+
+%br
+
+= link_to 'New Tracker task', new_tracker_task_path

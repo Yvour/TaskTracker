@@ -1,0 +1,14 @@
+= simple_form_for(@tracker_task) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :cost
+    = f.input :title
+    = f.input :description
+    = f.association :tracker_project, :item_wrapper_class => 'TrackerProject'
+    = f.association :initiator, :item_wrapper_class => 'TrackerUser'
+    = f.association :user, :item_wrapper_class => 'TrackerUser'
+    = f.input :tag_list, :label => 'tags, delimited by comma'
+
+  .form-actions
+    = f.button :submit

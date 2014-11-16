@@ -1,0 +1,33 @@
+%h1 Listing tracker_tasks
+%div= link_to 'AllTasks', tracker_tasks_path
+
+%table
+  %tr
+    %th Initialized
+    %th Title
+    %th Description
+    %th Initiator
+    %th User
+    %th Project
+    %th Tags
+    %th
+    %th
+    %th
+
+  - @tracker_tasks.each do |tracker_task|
+    %tr
+      %td= tracker_task.cost
+      %td= tracker_task.title
+      %td= tracker_task.description
+      %td= tracker_task.initiator_id
+      %td= tracker_task.user.email
+      %td= tracker_task.tracker_project.name
+      %td= raw tracker_task.tag_list.map { |tag| link_to tag, tag_path(tag)}.join(', ')
+      %td= link_to 'Show', tracker_task
+      %td= link_to 'Edit', edit_tracker_task_path(tracker_task)
+      %td= link_to 'Destroy', tracker_task, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %div= render tracker_task
+
+%br
+
+= link_to 'New Tracker task', new_tracker_task_path

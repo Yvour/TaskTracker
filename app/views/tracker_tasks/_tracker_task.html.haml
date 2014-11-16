@@ -1,0 +1,16 @@
+%table{:class=>'taskcelltable'}
+  %tr
+    %td 'Title'
+    %td= tracker_task.title
+  %tr
+    %td 'User'
+    %td= tracker_task.user.email
+  %tr
+    %td Destription
+    %td= tracker_task.description
+  %tr
+    %td Project
+    %td= tracker_task.tracker_project.name
+  %tr 
+    %td tags
+    %td= raw tracker_task.tag_list.map { |tag| link_to tag, tag_path(tag)}.join(', ')

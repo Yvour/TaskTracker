@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @tracker_project.name
+%p
+  %b Description:
+  = @tracker_project.description
+
+= link_to 'Edit', edit_tracker_project_path(@tracker_project)
+\|
+= link_to 'Back', tracker_projects_path

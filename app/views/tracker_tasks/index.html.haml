@@ -1,0 +1,36 @@
+%h1 Listing tracker_tasks
+%div= link_to 'AllTasks', tracker_tasks_path
+= @z
+
+  
+
+%table
+  %tr
+    %th Initialized
+    %th Accepted
+    %th Verified
+    %th In Process
+    %th In Test
+    %th Executed
+  
+  - @tracker_tasks.each do |tracker_task|
+    %tr
+      - @states.each_with_index do |state, index|
+
+        %td{:class=>'taskcell'}
+          - if tracker_task.state == state
+            - # Stuff like ______ activates the if statement
+            = render tracker_task 
+            - if @acts[index] != 'none'
+              = link_to @acts[index], act_path(tracker_task, :execute=>@acts[index])
+            - else
+              %div terminal state
+          - else
+            - # Stuff like _____ activates the else statement
+            &amp;
+
+                             
+
+%br
+
+= link_to 'New Tracker task', new_tracker_task_path

@@ -1,0 +1,8 @@
+<h1>Welcome#index</h1>
+<p>Find me in app/views/welcome/index.html.erb</p>
+
+<%  if current_user.is_admin   %>
+          <%=  link_to 'Users', tracker_users_path  %>
+          <%  end  %>
+<%=       link_to 'Projects', tracker_projects_path    %>
+<%=       link_to 'Tasks', tracker_tasks_path    %>

@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Email:
+  = @tracker_user.email
+%p
+  %b Is admin:
+  = @tracker_user.is_admin
+
+= link_to 'Edit', edit_tracker_user_path(@tracker_user)
+\|
+= link_to 'Back', tracker_users_path

@@ -1,0 +1,25 @@
+%p#notice= notice
+
+%p
+  %b Cost:
+  = @tracker_task.cost
+%p
+  %b Title:
+  = @tracker_task.title
+%p
+  %b Project:
+  = @tracker_task.tracker_project.name
+%p  
+  %b Description:
+  = @tracker_task.description
+%p
+  %b Initiator:
+  = @tracker_task.initiator.email
+%p
+  %b User:
+  = @tracker_task.user.email
+  = @z
+
+= link_to 'Edit', edit_tracker_task_path(@tracker_task)
+\|
+= link_to 'Back', tracker_tasks_path
