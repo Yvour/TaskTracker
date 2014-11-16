@@ -14,3 +14,6 @@
   %tr 
     %td tags
     %td= raw tracker_task.tag_list.map { |tag| link_to tag, tag_path(tag)}.join(', ')
+  %tr    
+    %td= link_to 'Edit', edit_tracker_task_path(tracker_task)
+    %td= link_to 'Destroy', tracker_task, :method => :delete, :data => { :confirm => 'Are you sure?' }    
